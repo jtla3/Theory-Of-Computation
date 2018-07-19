@@ -11,13 +11,23 @@ var rl = readline.createInterface({
 
 rl.on('line', function (line) {
 
-    // !!!! IMPLEMENT ME
+  // !!!! IMPLEMENT ME
 
-    // Come up with the phone regex
+  // Come up with the phone regex
+  const phoneRe = /\(?\d+\)?[-.\s]?\d+[-.\s]?\d+/g;
 
-    // Find matches
+  // Find matches
+  const findMatch = line.match(phoneReg);
 
-    // If match found, print number with no spaces, parens, or dashes
-
-    // Else print that no number was found
+  // If match found, print number with no spaces, parens, or dashes
+  if (findMatch !== null) {
+    findMatch.forEach(item => {
+      const arr = item.split('');
+      const result = arr.filter(element => Number.isInteger(Number(element)) === true && element !== ' ');
+      console.log(result.join(''));
+    });
+  } else {
+  // Else print that no number was found
+  console.log("No phone number found");
+   }
 });
